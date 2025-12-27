@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SportTech - Contact Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a1f2b",
+                        "surface-dark-hover": "#222836",
+                        "text-secondary": "#9da6b9",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Noto Sans", sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: "Space Grotesk", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-white overflow-x-hidden">
+<div class="relative flex h-full min-h-screen w-full flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#282e39] bg-white dark:bg-[#1a1f2b]/95 backdrop-blur-md px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 flex items-center justify-center rounded bg-primary text-white">
+<span class="material-symbols-outlined" style="font-size: 20px;">sports_tennis</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] font-display">SportTech Court</h2>
+</div>
+<div class="hidden lg:flex items-center gap-9">
+<a class="text-slate-500 hover:text-primary dark:text-text-secondary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+<a class="text-slate-500 hover:text-primary dark:text-text-secondary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Bookings</a>
+<a class="text-primary dark:text-white text-sm font-bold leading-normal" href="#">Contacts</a>
+<a class="text-slate-500 hover:text-primary dark:text-text-secondary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Reports</a>
+<a class="text-slate-500 hover:text-primary dark:text-text-secondary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Settings</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full group">
+<div class="text-slate-400 dark:text-[#9da6b9] flex border-none bg-slate-100 dark:bg-[#282e39] items-center justify-center pl-4 rounded-l-lg border-r-0 transition-colors group-focus-within:text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-[#282e39] focus:border-none h-full placeholder:text-slate-400 dark:placeholder:text-[#9da6b9] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal transition-all" placeholder="Global Search..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-[#282e39] dark:hover:bg-[#323946] text-slate-900 dark:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">notifications</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-[#282e39] dark:hover:bg-[#323946] text-slate-900 dark:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">help</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-10 border border-slate-200 dark:border-slate-700" data-alt="Admin user profile picture with a professional look" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvn0R-1u5lJyAf6lnfwTKPp3vhBs159t01ApDF-GEpt6OKzdI31ZKnDnmK4b1gUvNKPYiq3sHaWakwa5S4lruKGU5FBuiiyAWDy4C9HLdPZEygdygq3e2YlOfr72nKB_cMzi8ohj5HHxG1jiDXS8zt3boB5CX2PEvCn3dvppGp2GUoMQsc8awuM_gtGwKmhVedvD5GT1o_4P-aJt9VfOx4I6Ym-rddSzBiybq099gf0mFLRiXWDsYQ8x79KcXveA0WzWF5COa2lQ");'></div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex justify-center py-8 px-6 lg:px-10">
+<div class="flex flex-col max-w-[1200px] flex-1 gap-6">
+<!-- Page Heading & Primary Action -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2 border-b border-slate-200 dark:border-white/10">
+<div class="flex min-w-72 flex-col gap-2">
+<h1 class="text-slate-900 dark:text-white text-4xl font-bold leading-tight tracking-[-0.02em] font-display">Contact Database</h1>
+<p class="text-slate-500 dark:text-text-secondary text-base font-normal leading-normal">Manage players, coaches, staff, and VIP members.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center h-10 px-4 rounded-lg bg-slate-200 dark:bg-[#282e39] text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-[#323946] transition-colors text-sm font-bold tracking-wide">
+<span class="material-symbols-outlined mr-2" style="font-size: 20px;">upload</span>
+                             Import
+                        </button>
+<button class="flex items-center justify-center h-10 px-6 rounded-lg bg-primary text-white hover:bg-blue-600 transition-all shadow-lg shadow-primary/20 text-sm font-bold tracking-wide group">
+<span class="material-symbols-outlined mr-2 group-hover:scale-110 transition-transform" style="font-size: 20px;">add</span>
+                            Add New Contact
+                        </button>
+</div>
+</div>
+<!-- Filters & Toolbar -->
+<div class="flex flex-col gap-4">
+<!-- Search & Filter Row -->
+<div class="flex flex-col lg:flex-row justify-between gap-4">
+<!-- Search Field -->
+<div class="flex-1 max-w-[500px]">
+<div class="relative group">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 dark:text-text-secondary group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</span>
+<input class="w-full h-12 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-[#282e39] text-slate-900 dark:text-white pl-10 pr-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-text-secondary" placeholder="Search by name, email, or phone number..." type="text"/>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 no-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium transition-colors">All Contacts</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-[#282e39] hover:border-primary/50 text-slate-600 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-medium transition-colors">Players</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-[#282e39] hover:border-primary/50 text-slate-600 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-medium transition-colors">Coaches</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-[#282e39] hover:border-primary/50 text-slate-600 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-medium transition-colors">Staff</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-[#282e39] hover:border-primary/50 text-slate-600 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-medium transition-colors">VIPs</button>
+</div>
+<!-- View Options -->
+<div class="flex items-center gap-2 border-l border-slate-200 dark:border-white/10 pl-4">
+<button class="p-2 text-slate-500 dark:text-text-secondary hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 text-slate-500 dark:text-text-secondary hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">view_module</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contact Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-2">
+<!-- Card 1 -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-5 border border-slate-200 dark:border-[#282e39] hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="relative">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Portrait of Alex Morgan" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAAeXmBwXmM6K_9V5Ywk4PkzsX-DpSmGLtCFMtCaVuay-NvwG4f2GDW49-LwC5B9XRVAasQ6TEMch2yATSX_UBCKH1AEVjZnu2x5-WB2KyNpBpWHOJ9MyohcV4zqjDFMzmXoghThM5a_CgqAjqyNuCxCGfI0aU6olxGazb_MHhfQGIEYk4Smal-R6t7Wn0SiWhT9En5gRKcqbR4w9C1L__RYjyvrPkonx1PWkrnhio7EPI0m2cqFC07kYKFPcRpFUejvHYShMnLSg");'></div>
+<div class="absolute bottom-0 right-0 size-3 rounded-full bg-emerald-500 border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight font-display">Alex Morgan</h3>
+<span class="inline-flex items-center rounded bg-blue-100 dark:bg-blue-500/20 px-2 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300 ring-1 ring-inset ring-blue-700/10 dark:ring-blue-500/30">Player</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary dark:text-gray-500 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span class="truncate">alex.m@example.com</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>+1 (555) 123-4567</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex gap-2">
+<button class="flex-1 h-9 rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white text-xs font-bold uppercase tracking-wide hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">Profile</button>
+<button class="size-9 flex items-center justify-center rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-5 border border-slate-200 dark:border-[#282e39] hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="relative">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Portrait of Sarah Jenkins" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA6AzQTVZvfemuRlq_PgBjmhvycQx-9q9cwsjB1STKna2rh97oqiy5wacq6Ny7w_gWIB4SP62Z0VnbViejmHmh8lAUq2cBMSAeAzHzRw8ntmGsHU8sFzRvDLj_KEuhVtNLz3KZPdpuhzpT75SW1mcDtRoo8AksZGb7AJoR0idjDR00jV4Fo1D3lhP_VVE3S8-xQvm8G6i7AmoESid5wCsuwNn761RSuKl43dYhOgAbK2NPOKuHabNCGcniP0PyneyJOZjmNnnbUsw");'></div>
+<div class="absolute bottom-0 right-0 size-3 rounded-full bg-gray-400 border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight font-display">Sarah Jenkins</h3>
+<span class="inline-flex items-center rounded bg-purple-100 dark:bg-purple-500/20 px-2 py-0.5 text-xs font-medium text-purple-700 dark:text-purple-300 ring-1 ring-inset ring-purple-700/10 dark:ring-purple-500/30">Coach</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary dark:text-gray-500 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span class="truncate">s.jenkins@sporttech.com</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>+1 (555) 987-6543</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex gap-2">
+<button class="flex-1 h-9 rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white text-xs font-bold uppercase tracking-wide hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">Profile</button>
+<button class="size-9 flex items-center justify-center rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-5 border border-slate-200 dark:border-[#282e39] hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="relative">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Portrait of Michael Chen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoT541dLQdomfia5OK42Tox1Lclemn-xzuDbkovtxQ2xOMePl6DCPiE1I2TMrb7MigfGJh775cSA9qZjk9Bjed-SgLimdwjlez1V-LhiZCp7-UAJWu9FIOVYoDdk_oAB4aP4UPcdTs1CEZIA1Bv5Wi-khTQno4j1bNgjvOng96qtzUl8EvLqLHq2TXKnkL_q_sBwab_jjKxIVuegBT8l9URHJzjMBh2geb-7J6DjUpQm2F390Lq-ifzW4cVIFwwhIcrZmQQ5gXhQ");'></div>
+<div class="absolute bottom-0 right-0 size-3 rounded-full bg-emerald-500 border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight font-display">Michael Chen</h3>
+<span class="inline-flex items-center rounded bg-amber-100 dark:bg-amber-500/20 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300 ring-1 ring-inset ring-amber-700/10 dark:ring-amber-500/30">VIP</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary dark:text-gray-500 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span class="truncate">michael.c@invest.org</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>+1 (555) 456-7890</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex gap-2">
+<button class="flex-1 h-9 rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white text-xs font-bold uppercase tracking-wide hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">Profile</button>
+<button class="size-9 flex items-center justify-center rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-5 border border-slate-200 dark:border-[#282e39] hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="relative">
+<div class="size-12 rounded-full bg-slate-200 dark:bg-[#323946] flex items-center justify-center text-slate-600 dark:text-white font-bold font-display">DR</div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight font-display">David Ross</h3>
+<span class="inline-flex items-center rounded bg-slate-100 dark:bg-slate-500/20 px-2 py-0.5 text-xs font-medium text-slate-700 dark:text-slate-300 ring-1 ring-inset ring-slate-700/10 dark:ring-slate-500/30">Staff</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary dark:text-gray-500 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span class="truncate">d.ross@sporttech.com</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>+1 (555) 222-3333</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex gap-2">
+<button class="flex-1 h-9 rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white text-xs font-bold uppercase tracking-wide hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">Profile</button>
+<button class="size-9 flex items-center justify-center rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-5 border border-slate-200 dark:border-[#282e39] hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="relative">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Portrait of Emma Wilson" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbJQjTOesa1eTbc_b5UPHLAyQwPxemEhrpWtVTTwu7u0NgvSPGkF6CqmblUiioFdjd1xajmjxAv2oVUDyIFJ2H_yGNWthjeHorkczEYZ_JT-kPaEUb_MW0i_N4gbbFDnKGFFKmMighkQQcr1ITIDuGWPtWkvIVvJZcliiPYtMNFRwKMzlgUo-Wa5qb9GGnNpKLBccQJSE80No0Kyv5iF7VODCWvi44H3oC1eZAk_Zb7LcszDL7ijLLSpdIh2By9gCmMxzCLoGj7A");'></div>
+<div class="absolute bottom-0 right-0 size-3 rounded-full bg-emerald-500 border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight font-display">Emma Wilson</h3>
+<span class="inline-flex items-center rounded bg-blue-100 dark:bg-blue-500/20 px-2 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300 ring-1 ring-inset ring-blue-700/10 dark:ring-blue-500/30">Player</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary dark:text-gray-500 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span class="truncate">emma.w@example.com</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>+1 (555) 777-8888</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex gap-2">
+<button class="flex-1 h-9 rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white text-xs font-bold uppercase tracking-wide hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">Profile</button>
+<button class="size-9 flex items-center justify-center rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-5 border border-slate-200 dark:border-[#282e39] hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="relative">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Portrait of James Black" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEKpAYTy0DlMVzntgJirB97lvh192pePUA1xz_XBTOLu4ePlFoKHTpjuXZfzFhr4StMI5yWcL7FyEt5BYGzcvCGCM-S0tCrdXVrHb-2WJ4aVo6JBdmgDd2iz3MjDdEYv9XsLBKzlqfeXPy2z8Lp25Bb2qlsE4heRQm1EFj4HgExvXGewkT-vrrga5EBhC2xMX8YI-Od3zmXZK7uHjpM3OGNhkRsRXuW0DqmwL8LQlUSgaCH673BR90cT3hQnQbLsoWj83My0tO9A");'></div>
+<div class="absolute bottom-0 right-0 size-3 rounded-full bg-emerald-500 border-2 border-white dark:border-surface-dark"></div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight font-display">James Black</h3>
+<span class="inline-flex items-center rounded bg-purple-100 dark:bg-purple-500/20 px-2 py-0.5 text-xs font-medium text-purple-700 dark:text-purple-300 ring-1 ring-inset ring-purple-700/10 dark:ring-purple-500/30">Coach</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary dark:text-gray-500 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span class="truncate">james.b@sporttech.com</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-sm">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>+1 (555) 666-9999</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex gap-2">
+<button class="flex-1 h-9 rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white text-xs font-bold uppercase tracking-wide hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">Profile</button>
+<button class="size-9 flex items-center justify-center rounded bg-slate-100 dark:bg-[#282e39] text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#323946] transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between border-t border-slate-200 dark:border-white/10 pt-6 mt-4">
+<p class="text-sm text-slate-500 dark:text-text-secondary">
+                        Showing <span class="font-bold text-slate-900 dark:text-white">1</span> to <span class="font-bold text-slate-900 dark:text-white">6</span> of <span class="font-bold text-slate-900 dark:text-white">124</span> results
+                    </p>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-sm font-medium text-slate-500 dark:text-text-secondary bg-transparent rounded-lg hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#282e39] transition-colors disabled:opacity-50">
+                            Previous
+                        </button>
+<button class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-600 transition-colors">
+                            Next
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

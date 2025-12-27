@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Torem - Iniciar Sesión</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2ECC71", // Vibrant Green from screenshot button
+                        secondary: "#0099FF", // Electric Blue from screenshot lines
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#022C43", // Deep Teal/Blue from screenshot
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#033B58", // Slightly lighter teal for cards
+                        "input-dark": "#011F30",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "1rem",
+                        '2xl': "1.5rem",
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(46, 204, 113, 0.3)',
+                        'glow-blue': '0 0 20px rgba(0, 153, 255, 0.2)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }.gradient-line {
+            background: linear-gradient(90deg, transparent, var(--tw-gradient-from), var(--tw-gradient-to), transparent);
+            background-size: 200% 100%;
+            animation: moveGradient 3s linear infinite;
+        }
+        @keyframes moveGradient {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+        .glass-panel {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-white min-h-screen flex flex-col antialiased">
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute -top-[10%] -right-[10%] w-[500px] h-[500px] bg-secondary/10 dark:bg-secondary/20 rounded-full blur-[100px]"></div>
+<div class="absolute -bottom-[10%] -left-[10%] w-[500px] h-[500px] bg-primary/10 dark:bg-primary/20 rounded-full blur-[100px]"></div>
+<svg class="absolute top-0 left-0 w-full h-full opacity-30 dark:opacity-40" xmlns="http://www.w3.org/2000/svg">
+<path d="M-100 200 C 200 200, 300 100, 500 100 S 800 300, 1200 300" fill="none" stroke="url(#grad1)" stroke-width="2"></path>
+<path d="M100 800 C 400 800, 500 600, 800 600 S 1100 500, 1400 500" fill="none" stroke="url(#grad2)" stroke-width="2"></path>
+<defs>
+<linearGradient id="grad1" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#FF0080;stop-opacity:0"></stop> 
+<stop offset="50%" style="stop-color:#0099FF;stop-opacity:1"></stop> 
+<stop offset="100%" style="stop-color:#0099FF;stop-opacity:0"></stop>
+</linearGradient>
+<linearGradient id="grad2" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#2ECC71;stop-opacity:0"></stop> 
+<stop offset="50%" style="stop-color:#2ECC71;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#2ECC71;stop-opacity:0"></stop>
+</linearGradient>
+</defs>
+</svg>
+</div>
+<nav class="relative z-10 w-full px-6 py-6 flex justify-between items-center max-w-7xl mx-auto">
+<a class="flex items-center gap-2 group" href="#">
+<div class="w-8 h-8 border-2 border-primary rounded flex items-center justify-center text-primary font-bold group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-icons-round text-sm">crop_free</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Torem</span>
+</a>
+<div class="flex items-center gap-4">
+<span class="text-sm text-gray-500 dark:text-gray-400 hidden sm:block">¿Aún no tienes cuenta?</span>
+<a class="text-sm font-semibold text-primary hover:text-green-400 transition-colors" href="#">Registrarse</a>
+<button class="p-2 rounded-full bg-gray-200 dark:bg-white/10 text-gray-700 dark:text-white hover:bg-gray-300 dark:hover:bg-white/20 transition-all" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-round text-sm">brightness_4</span>
+</button>
+</div>
+</nav>
+<main class="relative z-10 flex-grow flex items-center justify-center px-4 py-12">
+<div class="w-full max-w-md">
+<div class="bg-surface-light dark:bg-surface-dark/80 glass-panel rounded-2xl shadow-2xl dark:shadow-black/50 border border-gray-100 dark:border-white/10 p-8 sm:p-10 transform transition-all hover:scale-[1.01]">
+<div class="mb-8 text-center">
+<h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight">Bienvenido de nuevo</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Ingresa tus credenciales para gestionar tus reservas.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<button class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors text-sm font-medium text-gray-700 dark:text-gray-200">
+<svg class="w-5 h-5" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                        Google
+                    </button>
+<button class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors text-sm font-medium text-gray-700 dark:text-gray-200">
+<svg class="w-5 h-5 text-gray-900 dark:text-white" fill="currentColor" viewBox="0 0 24 24">
+<path d="M13.0729 1.55835C13.8885 0.54892 15.2229 0 16.3541 0V0C16.1437 1.34166 15.352 2.53123 14.2208 3.34685C13.2958 4.04165 12.0125 4.54685 10.8562 4.44165C10.8146 4.35727 10.8146 4.27289 10.8146 4.18956C10.8146 3.19998 11.4458 2.08436 13.0729 1.55835Z"></path>
+<path d="M19.1687 14.6344C19.1687 18.9666 22.9958 20.4447 23 20.4656C22.9792 20.55 22.3708 22.6187 20.8979 24.7291C19.6146 26.5666 18.2917 26.5249 16.2708 26.5249C14.1687 26.5249 13.5167 25.2833 11.0979 25.2833C8.65833 25.2833 7.85833 26.4624 5.94375 26.5249C3.90208 26.5874 2.22083 24.5395 0.8125 22.5562C-2.02917 18.4604 0.0979167 11.2312 4.28333 10.9999C6.30208 10.8947 7.73125 12.3468 8.95208 12.3468C10.0458 12.3468 11.7708 10.6427 14.2312 10.8947C15.2833 10.9364 17.6583 11.2947 19.1687 13.4354C19.0646 13.4979 16.5437 14.95 16.5437 18.2916C16.5437 18.3333 16.5437 18.3749 16.5437 18.4166L19.1687 14.6344Z" transform="translate(0.5 -3) scale(0.85)"></path>
+</svg>
+                        Apple
+                    </button>
+</div>
+<div class="relative flex py-2 items-center mb-6">
+<div class="flex-grow border-t border-gray-200 dark:border-gray-600"></div>
+<span class="flex-shrink-0 mx-4 text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider">O continuar con email</span>
+<div class="flex-grow border-t border-gray-200 dark:border-gray-600"></div>
+</div>
+<form action="#" class="space-y-5" method="POST">
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 ml-1" for="email">Email</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400 dark:text-gray-500">
+<span class="material-icons-round text-xl">alternate_email</span>
+</div>
+<input class="block w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-gray-50 dark:bg-input-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all sm:text-sm shadow-sm" id="email" name="email" placeholder="tu@empresa.com" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center ml-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="password">Contraseña</label>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400 dark:text-gray-500">
+<span class="material-icons-round text-xl">lock_outline</span>
+</div>
+<input class="block w-full pl-11 pr-12 py-3 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-gray-50 dark:bg-input-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all sm:text-sm shadow-sm" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors focus:outline-none" type="button">
+<span class="material-icons-round text-xl">visibility_off</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center">
+<input class="h-4 w-4 text-primary focus:ring-primary border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-input-dark" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block text-sm text-gray-600 dark:text-gray-400" for="remember-me">
+                                Recordarme
+                            </label>
+</div>
+<div class="text-sm">
+<a class="font-medium text-secondary hover:text-blue-400 transition-colors" href="#">
+                                ¿Olvidaste la contraseña?
+                            </a>
+</div>
+</div>
+<button class="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-glow text-sm font-bold text-white bg-primary hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-background-dark transition-all transform hover:-translate-y-0.5 mt-4" type="submit">
+                        Iniciar Sesión
+                    </button>
+</form>
+</div>
+<p class="mt-8 text-center text-xs text-gray-400 dark:text-gray-500">
+                © 2023 Torem Inc. Todos los derechos reservados.
+                <br/>
+<a class="hover:text-gray-500 dark:hover:text-gray-300 transition-colors" href="#">Privacidad</a> · <a class="hover:text-gray-500 dark:hover:text-gray-300 transition-colors" href="#">Términos</a>
+</p>
+</div>
+</main>
+
+</body></html>
