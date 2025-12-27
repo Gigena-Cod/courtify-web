@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Torem - Iniciar Sesión o Registrarse</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2ECC71", // Vibrant Green
+                        secondary: "#0099FF", // Electric Blue
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#022C43", // Deep Teal/Blue
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#033B58", // Slightly lighter teal
+                        "input-dark": "#011F30",
+                        "charcoal": "#1e293b", 
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "0.75rem",
+                        '2xl': "1rem",
+                        '3xl': "1.5rem",
+                    },
+                    boxShadow: {
+                        'glow': '0 0 25px rgba(46, 204, 113, 0.4)',
+                        'glow-blue': '0 0 25px rgba(0, 153, 255, 0.4)',
+                        'card': '0 25px 50px -12px rgba(0, 0, 0, 0.35)',
+                    },
+                    transitionProperty: {
+                        'height': 'height',
+                        'spacing': 'margin, padding',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }#tab_login:checked ~ .content-container #login_content {
+            display: block;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        #tab_register:checked ~ .content-container #register_content {
+            display: block;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        #tab_login:checked ~ .tabs-header label[for="tab_login"] {
+            color: #2ECC71;
+            border-color: #2ECC71;
+        }
+        #tab_register:checked ~ .tabs-header label[for="tab_register"] {
+            color: #0099FF;
+            border-color: #0099FF;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 min-h-screen flex flex-col antialiased relative selection:bg-primary selection:text-white overflow-x-hidden">
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[120px] mix-blend-screen opacity-50 dark:opacity-40"></div>
+<div class="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] mix-blend-screen opacity-50 dark:opacity-40"></div>
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgNDBMMDQwIDAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjAzIiBmaWxsPSJub25lIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-10 dark:opacity-20"></div>
+</div>
+<nav class="relative z-10 w-full px-6 py-6 flex justify-between items-center max-w-7xl mx-auto">
+<a class="flex items-center gap-3 group" href="#">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-emerald-600 flex items-center justify-center text-white shadow-glow group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined text-xl">sports_tennis</span>
+</div>
+<span class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white font-display">Torem</span>
+</a>
+<div class="flex items-center gap-4">
+<button class="p-2.5 rounded-full bg-white/50 dark:bg-white/5 text-gray-700 dark:text-white hover:bg-white/80 dark:hover:bg-white/10 backdrop-blur-sm transition-all border border-gray-200 dark:border-white/10 group" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined text-xl group-hover:rotate-180 transition-transform duration-500">dark_mode</span>
+</button>
+</div>
+</nav>
+<main class="relative z-10 flex-grow flex items-center justify-center px-4 py-8">
+<div class="w-full max-w-[460px]">
+<div class="bg-surface-light dark:bg-surface-dark/90 glass-panel rounded-3xl shadow-card border border-gray-100 dark:border-white/10 overflow-hidden relative">
+<input checked="" class="hidden" id="tab_login" name="auth_tabs" type="radio"/>
+<input class="hidden" id="tab_register" name="auth_tabs" type="radio"/>
+<div class="tabs-header flex w-full border-b border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-black/20">
+<label class="flex-1 text-center py-4 cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 border-b-2 border-transparent transition-all font-semibold tracking-wide text-sm uppercase select-none" for="tab_login">
+                        Iniciar Sesión
+                    </label>
+<label class="flex-1 text-center py-4 cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 border-b-2 border-transparent transition-all font-semibold tracking-wide text-sm uppercase select-none" for="tab_register">
+                        Registrarse
+                    </label>
+</div>
+<div class="content-container relative min-h-[500px]">
+<div class="hidden absolute inset-0 w-full p-8 sm:p-10 h-auto relative" id="login_content">
+<div class="mb-8 text-center">
+<h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight">Bienvenido</h1>
+<p class="text-gray-500 dark:text-gray-300 text-sm">Gestiona tus reservas de pádel y fútbol.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors text-sm font-semibold text-gray-700 dark:text-gray-200">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANsKgpyuurDiv0CRqTGZbNYQYVBChS8HIsO4UrlP7LJPAWoPIkp-FZQYAkMM0HumM7czqx1fGWNUiR848XD2JeAauTkYSu20q9vylwBSCqx2Dpiyi3nRWGLNtU9ataBO7gVx4cVipcUB12d19hQ-MgrZGtIJ0oF0QTnK2FWAooCWkVTGlWugB2GoZAag0o4aRchO-hEbRPSKXjKD1EeRLcqzlavRV8oS0-v4rXD6GhemFOpDCSeCdMTZDcuW4pNBHbwx-cExslyA"/>
+<span>Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors text-sm font-semibold text-gray-700 dark:text-gray-200">
+<span class="material-symbols-outlined text-[22px]">ios</span>
+<span>Apple</span>
+</button>
+</div>
+<div class="relative flex py-2 items-center mb-6">
+<div class="flex-grow border-t border-gray-200 dark:border-white/10"></div>
+<span class="flex-shrink-0 mx-4 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">O con email</span>
+<div class="flex-grow border-t border-gray-200 dark:border-white/10"></div>
+</div>
+<form action="#" class="space-y-5" method="POST">
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide ml-1" for="email">Email</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">mail</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-gray-50 dark:bg-input-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-sm shadow-sm" id="email" name="email" placeholder="ejemplo@torem.com" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center ml-1">
+<label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide" for="password">Contraseña</label>
+<a class="text-xs font-medium text-secondary hover:text-blue-400 transition-colors" href="#">¿Olvidaste?</a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">lock</span>
+</div>
+<input class="block w-full pl-12 pr-12 py-3.5 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-gray-50 dark:bg-input-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-sm shadow-sm" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full flex justify-center items-center gap-2 py-4 px-4 border border-transparent rounded-2xl shadow-glow text-sm font-bold text-white bg-gradient-to-r from-primary to-green-500 hover:from-green-500 hover:to-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-surface-dark transition-all transform hover:-translate-y-0.5 mt-6 group" type="submit">
+<span class="group-hover:scale-[1.02] transition-transform">Entrar a Torem</span>
+<span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+</div>
+<div class="hidden absolute inset-0 w-full p-8 sm:p-10 h-auto relative" id="register_content">
+<div class="mb-6 text-center">
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight">Crea tu cuenta</h1>
+<p class="text-gray-500 dark:text-gray-300 text-sm">Únete a la comunidad premium del deporte.</p>
+</div>
+<form action="#" class="space-y-4" method="POST">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide ml-1" for="name">Nombre</label>
+<input class="block w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-gray-50 dark:bg-input-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all text-sm shadow-sm" id="name" name="name" placeholder="Juan" required="" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide ml-1" for="surname">Apellido</label>
+<input class="block w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-gray-50 dark:bg-input-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all text-sm shadow-sm" id="surname" name="surname" placeholder="Pérez" required="" type="text"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide ml-1" for="reg-email">Email</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-secondary transition-colors">
+<span class="material-symbols-outlined text-xl">mail</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-gray-50 dark:bg-input-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all text-sm shadow-sm" id="reg-email" name="email" placeholder="tu@email.com" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide ml-1" for="reg-password">Contraseña</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-secondary transition-colors">
+<span class="material-symbols-outlined text-xl">lock</span>
+</div>
+<input class="block w-full pl-12 pr-12 py-3 rounded-xl border border-gray-200 dark:border-gray-600/50 bg-gray-50 dark:bg-input-dark text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all text-sm shadow-sm" id="reg-password" name="password" placeholder="Min. 8 caracteres" required="" type="password"/>
+</div>
+</div>
+<div class="flex items-start pt-2">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 text-secondary border-gray-300 dark:border-gray-600 rounded bg-gray-50 dark:bg-input-dark focus:ring-secondary/50" id="terms" name="terms" required="" type="checkbox"/>
+</div>
+<div class="ml-3 text-sm leading-snug">
+<label class="font-light text-gray-500 dark:text-gray-400" for="terms">
+                                        Acepto los <a class="font-medium text-secondary hover:underline" href="#">términos y condiciones</a> y la política de privacidad.
+                                    </label>
+</div>
+</div>
+<button class="w-full flex justify-center items-center gap-2 py-3.5 px-4 border border-transparent rounded-2xl shadow-glow-blue text-sm font-bold text-white bg-gradient-to-r from-secondary to-blue-500 hover:from-blue-500 hover:to-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary dark:focus:ring-offset-surface-dark transition-all transform hover:-translate-y-0.5 mt-2 group" type="submit">
+<span class="group-hover:scale-[1.02] transition-transform">Crear Cuenta</span>
+<span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">person_add</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+<p class="mt-8 text-center text-xs text-gray-400 dark:text-gray-500 font-medium">
+                © 2024 Torem Inc. · <a class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors" href="#">Privacidad</a> · <a class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors" href="#">Ayuda</a>
+</p>
+</div>
+</main>
+
+</body></html>
